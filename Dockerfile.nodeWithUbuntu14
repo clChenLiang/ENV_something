@@ -39,18 +39,14 @@ RUN bash | echo start to install things \
     && curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | bash \
     # 因为解决不了 sh 的问题，只好手动去下载；后续可以加上，启动运行
     # && nvm install v6.10.2 \
-    # && npm install snpm -g --registry=http://registry.npm.souche-inc.com
+    # && npm install snpm -g --registry=`私有库地址`
 # RUN nvm -v \
     # && npm -v \
     # && node -v
 
 
-# docker run -dit -v ~/projects_souche/newMessageCenter/msgcenter-server/:/app/messageCenter \
-# > -p 7070:7070 \
-# > -p 80:80 \
-# > -p 7080:7080 \
-# > -p 81:81 \
-# > -p 8080:8080 \
+# docker run -dit -v ~/`项目位置`/newMessageCenter/msgcenter-server/:/app/messageCenter \
+# > -p `端口`:`端口`
 # > cl_004_direct_from_dockerfile \
 # > /bin/bash
 
