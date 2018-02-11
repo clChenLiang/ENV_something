@@ -56,14 +56,11 @@ docker build -t msgcenter_docker .
 镜像生成之后，使用 **```docker image ls```** 查看当前镜像。
 基于 `msgcenter_docker` 镜像，可以生成运行的容器：
 ```shell
- docker run -dit -v 消息中心目录:/app/messageCenter \
- -p 7077:7077 \
- -p 80:80 \
- -p 7080:7080 \
- -p 81:81 \
- -p 8080:8080 \
+ docker run -dit -v projectDir:/newDirInDocker \
+ -p n:n \
  msgCenterContainer \
  /bin/bash
+ 
 ```
 `-dit`: 表示后台，标准输入/输出流，类终端形式运行容器
 ## 手动安装剩余配置
@@ -76,7 +73,7 @@ nvm install v6.10.2
 因为 npm 依赖于 node 产生。所以第二个 Dockerfile 采用更简洁的方式，防止了由基础镜像得到的容器，获取不到最新版本的 bug.
 #### 2. 安装 snpm -- 私有库安装
 ```shell
-npm install snpm -g --registry=http://registry.npm.souche-inc.com
+npm install snpm -g --registry=`私有库地址`
 ```
 #### 3. 安装 node-gyp、make、gcc、g++ 等编译工具
 ```shell
@@ -94,11 +91,11 @@ mkdir /app/docker/
 ```
 * 复制项目：
 ```shell
-cp -r /app/messageCenter/ /app/docker/
+cp -r /`原位置` /`docker 中放置的位置`
 ```
 * 删除原模块
 ```shell
-rm -rf /app/docker/node_moudle/
+rm -rf /`docker 中项目位置`/node_moudle/
 ```
 #### 5. 配置项目
 * 安装内部模块，移至项目目录下 : 
